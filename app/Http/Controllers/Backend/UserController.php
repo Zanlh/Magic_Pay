@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helpers\UUIDGenerate;
 use App\User;
+use App\Wallet;
 use Carbon\Carbon;
 use Jenssegers\Agent\Agent;
 use App\Http\Requests\StoreUser;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\UpdateUser;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
@@ -66,15 +69,33 @@ class UserController extends Controller
 
 
     public function store (StoreUser $request){
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
-        $user->save();
+        DB::beginTransaction();
+        try{
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->password = Hash::make($request->password);
+            $user->save();
 
-        return redirect()->route('admin.user.index')->with('create','Successfully Created');
+            Wallet::firstOrCreate(
+                [
+                    'user_id' => $user->id,
+                ],
+                [
+                    'account_number' =>UUIDGenerate::accountNumber(),
+                    'amount' => 0,
+                ]
+            );
+            DB::commit();
 
+            return redirect()->route('admin.user.index')->with('create','Successfully Created');
+            
+        }catch(\Exception $e){
+            
+            DB::rollBack();
+            return back()->withErrors(['fail' => 'Something Wrong. '. $e->getMessage()])->withInput();
+        }        
     }
 
     public function edit($id){
@@ -83,6 +104,7 @@ class UserController extends Controller
     }
 
     public function update ($id,UpdateUser $request){
+        try{
         
         $user = User::findOrFail($id);
         $user->name = $request->name;
@@ -91,7 +113,24 @@ class UserController extends Controller
         $user->password = $request->password ? Hash::make($request->password) : $user->password ;
         $user->update();
 
-        return redirect()->route('admin.user.index')->with('update','Successfully Updated');
+        Wallet::firstOrCreate(
+            [
+                'user_id' => $user->id,
+            ],
+            [
+                'account_number' =>UUIDGenerate::accountNumber(),
+                'amount' => 0,
+            ]
+        );
+        DB::commit();
+
+            return redirect()->route('admin.user.index')->with('update','Successfully Updated');
+
+        }catch(\Exception $e){
+            
+            DB::rollBack();
+            return back()->withErrors(['fail' => 'Something Wrong. '. $e->getMessage()])->withInput();
+        }        
 
     }
 

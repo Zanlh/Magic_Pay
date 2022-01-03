@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\AdminUser;
 use Jenssegers\Agent\Agent;
-use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
