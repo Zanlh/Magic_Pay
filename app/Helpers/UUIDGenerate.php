@@ -12,4 +12,5 @@ class UUIDGenerate{
         return $number;
     }
 }
+
 ?>
