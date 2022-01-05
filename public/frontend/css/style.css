@@ -1,0 +1,57 @@
+/* 
+============================
+Theme Design
+============================
+Theme - #5842e3
+background: EDEDF5
+border-radius: 10px
+font-size: 15px
+box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+*/
+
+body {
+    background: #ededf5;
+}
+
+.btn-theme {
+    background: #5842e3;
+    color: #fff;
+}
+
+.btn-theme:hover {
+    background: #5842e3;
+    color: #fff;
+}
+
+.btn {
+    padding: 10px;
+}
+
+
+/* -----------------------------Auth Form-------------------------------- */
+
+.auth-form {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 10px;
+}
+
+.auth-form a {
+    color: #333;
+    text-decoration: none;
+}
+
+.auth-form a:hover {
+    color: #5842e3;
+}
+
+
+/* -----------------------------Bottom Menu-------------------------------- */
+
+.bottom-menu {
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}

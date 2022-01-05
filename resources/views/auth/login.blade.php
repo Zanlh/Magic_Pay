@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card auth-form">
                 <h3 class="text-center">Login</h3>
-                <p class="text-center">Welcome to Magic pay</p>
+                <p class="text-center text-muted">Welcome to Magic pay</p>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -30,10 +30,12 @@
                                     </span>
                                 @enderror
                         </div>
-                        <button class="btn btn-primary btn-block my-3">Login</button>
+
+
+                        <button class="btn btn-theme btn-block my-3">Login</button>
 
                         <div class="d-flex justify-content-between">
-                            <a href="{{route('register')}}">Already have an account?</a>
+                            <a href="{{route('register')}}">Register now!</a>
                             @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
