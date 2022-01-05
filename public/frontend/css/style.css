@@ -55,3 +55,65 @@ body {
     right: 0;
     left: 0;
 }
+
+.bottom-menu i {
+    margin-top: 12px;
+    font-size: 20px;
+}
+
+.bottom-menu p {
+    margin-bottom: 12px;
+    font-size: 12px;
+}
+
+.bottom-menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+.bottom-menu a:hover i {
+    color: #5842e3;
+    transition: .3s;
+}
+
+.bottom-menu a:hover p {
+    color: #5842e3;
+    transition: .3s;
+}
+
+
+/* -----------------------------Header Menu-------------------------------- */
+
+.header-menu {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.header-menu i {
+    font-size: 20px;
+}
+
+.header-menu h3 {
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.header-menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+.header-menu a:hover i {
+    color: #5842e3;
+    transition: .3s;
+}
+
+.header-menu a:hover p {
+    color: #5842e3;
+    transition: .3s;
+}
