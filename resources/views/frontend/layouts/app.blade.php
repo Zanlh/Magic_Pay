@@ -28,17 +28,22 @@
 <body>
     <div id="app">
         <div class="header-menu">
-            <div class="row justify-content-center">
+            <div class="d-flex justify-content-center">
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-4 text-center">
+                        <div class="col-2 text-center">
+                            @if (!request()->is('/'))
+                                <a href="#" class="back-btn">
+                                    <i class="fas fa-angle-left"></i>
+                                </a>
+                            @endif
                         </div>
-                        <div class="col-4 text-center">
-                            <a href="" class="">
-                                <h3>@yield('title')</h3>
-                            </a>
+                        <div class="col-8 text-center">
+
+                            <h3>@yield('title')</h3>
+
                         </div>
-                        <div class="col-4 text-center">
+                        <div class="col-2 text-center">
                             <a href="" class="">
                                 <i class="fas fa-bell"></i>
                             </a>
@@ -49,7 +54,7 @@
         </div>
 
         <div class="content">
-            <div class="row justify-content-center">
+            <div class="d-flex justify-content-center">
                 <div class="col-md-8">
                     @yield('content')
                 </div>
@@ -58,7 +63,7 @@
         </div>
 
         <div class="bottom-menu">
-            <div class="row justify-content-center">
+            <div class="d-flex justify-content-center">
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-4 text-center">
@@ -104,17 +109,49 @@
 
     <script>
         $(document).ready(function() {
-                    let token = document.head.querySelector('meta[name = "csrf-token"]');
-                    if (token) {
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF_TOKEN': token.content,
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json',
-                            }
-                        });
+            let token = document.head.querySelector('meta[name = "csrf-token"]');
+            if (token) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF_TOKEN': token.content,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
                     }
                 });
+            }
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            @if (session('create'))
+                Toast.fire({
+                icon: 'success',
+                title: '{{ session('create') }}'
+                });
+            @endif
+
+            @if (session('update'))
+                Toast.fire({
+                icon: 'success',
+                title: '{{ session('update') }}'
+                });
+            @endif
+
+            $('.back-btn').on('click', function(e) {
+                e.preventDefault();
+                window.history.go(-1);
+                return false;
+            })
+        });
     </script>
 
     @yield('scripts')

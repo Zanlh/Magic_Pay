@@ -44,6 +44,13 @@ a:hover {
     color: #fff;
 }
 
+.invalid-feedback {
+    display: block;
+}
+
+
+/* -----------------------------BSweet ALert 2-------------------------------- */
+
 .btn {
     padding: 10px;
 }
@@ -139,7 +146,7 @@ a:hover {
 }
 
 .header-menu h3 {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 0;
 }
 
