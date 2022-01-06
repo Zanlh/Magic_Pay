@@ -201,3 +201,85 @@ a:hover {
 .update-password img {
     width: 300px;
 }
+
+
+/* -----------------------------Scan Tab-------------------------------- */
+
+.scan-tab {
+    width: 60px;
+    height: 60px;
+    background: #EDEDF5;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.scan-tab .inside {
+    width: 52px;
+    height: 52px;
+    background: #fff;
+    border-radius: 1000%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: glow 5s infinite;
+}
+
+.scan-tab .inside i {
+    margin: 0;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 -10px #5842e3;
+    }
+    40% {
+        box-shadow: 0 0 15px #5842e3;
+    }
+    60% {
+        box-shadow: 0 0 15px #5842e3;
+    }
+    100% {
+        box-shadow: 0 0 -10px #5842e3;
+    }
+}
+
+
+/* -----------------------------Wallet-------------------------------- */
+
+.wallet {}
+
+.wallet .my-card {
+    background: #5842e3;
+    color: #fff;
+}
+
+.wallet .my-card span {
+    text-transform: uppercase;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #EDEDF5;
+}
+
+.wallet .my-card h4 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.wallet .my-card h5 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.wallet .my-card p {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}

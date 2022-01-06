@@ -38,4 +38,9 @@ class PageController extends Controller
 
         return back()->withErrors(['old_password'=>'The old password is not correct!'])->withInput();
     }
+
+    public function wallet(){
+        $authUser = auth()->guard('web')->user();
+        return view('frontend.wallet',compact('authUser'));
+    }
 }

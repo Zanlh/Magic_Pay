@@ -18,7 +18,7 @@
     {{-- google font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     @yield('extra_css')
@@ -63,22 +63,33 @@
         </div>
 
         <div class="bottom-menu">
+            <a href="" class="scan-tab">
+                <div class="inside">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+            </a>
             <div class="d-flex justify-content-center">
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             <a href="{{ route('home') }}">
                                 <i class="fas fa-home"></i>
                                 <p class="mb-0">Home</p>
                             </a>
                         </div>
-                        <div class="col-4 text-center">
-                            <a href="" class="">
-                                <i class="fas fa-qrcode"></i>
-                                <p class="mb-0">Scan</p>
+                        <div class="col-3 text-center">
+                            <a href="{{ route('wallet') }}" class="">
+                                <i class="fas fa-wallet"></i>
+                                <p class="mb-0">Wallets</p>
                             </a>
                         </div>
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
+                            <a href="" class="">
+                                <i class="fas fa-exchange-alt"></i>
+                                <p class="mb-0">Transactions</p>
+                            </a>
+                        </div>
+                        <div class="col-3 text-center">
                             <a href="{{ route('profile') }}" class="">
                                 <i class="fas fa-user"></i>
                                 <p class="mb-0">Account</p>
