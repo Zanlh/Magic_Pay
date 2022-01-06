@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,11 @@ Route::post('admin/logout','Auth\AdminLoginController@logout')-> name('admin.log
 //User Auth
 Auth::routes();
 
-Route::middleware('auth')->group(function(){
-    Route::get('/' ,'Frontend\PageController@home');
+Route::middleware('auth')->namespace('Frontend')->group(function(){
+    Route::get('/' ,'PageController@home')->name('home');
+
+    Route::get('/profile', 'PageController@profile')->name('profile');
+    Route::get('/update-password','PageController@updatePassword')->name('update-password');
+    Route::post('/update-password', 'PageController@updatePasswordStore')->name('update-password.store');
 });
 
