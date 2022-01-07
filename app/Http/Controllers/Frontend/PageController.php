@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +10,8 @@ use App\Http\Requests\UpdatePassword;
 class PageController extends Controller
 {
     public function home(){
-        return view('frontend.home');
+        $user = Auth::guard('web')->user();
+        return view('frontend.home', compact('user'));
     }
 
     public function profile(){

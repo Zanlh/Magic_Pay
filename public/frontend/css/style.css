@@ -178,21 +178,21 @@ a:hover {
 
 .account {}
 
-.account .profile {
-    text-align: center;
-}
-
-.account .profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-    padding: 5px;
-    background: #fff;
-}
-
 .account .card {
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    padding: 5px;
+    background: #fff;
 }
 
 
@@ -282,4 +282,13 @@ a:hover {
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+
+/* -----------------------------Home-------------------------------- */
+
+.shortcut-box img {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
 }

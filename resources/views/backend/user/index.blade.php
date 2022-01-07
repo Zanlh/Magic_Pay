@@ -34,8 +34,8 @@
                             <th>Created</th>
                             <th>Updated</th>
                             <th>Login Time</th>
-                            <th class="no-sort" >Action</th>
-                           
+                            <th class="no-sort">Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -50,7 +50,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-           var table =  $('.Datatable').DataTable({
+            var table = $('.Datatable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "/admin/user/datatable/ssd",
@@ -91,7 +91,9 @@
                         name: "action",
                     },
                 ],
-                order: [[ 6, "desc" ]],
+                order: [
+                    [6, "desc"]
+                ],
                 columnDefs: [{
                     targets: 'no-sort',
                     sortable: false
@@ -106,16 +108,16 @@
                 Swal.fire({
                     title: 'Are you sure, you want to delete?',
                     showCancelButton: true,
-                    confirmButtonText: 'confirm', 
+                    confirmButtonText: 'confirm',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                       $.ajax({
-                           url : '/admin/user/' + id,
-                           type : 'DELETE', 
-                           success: function() {
-                               table.ajax.reload();
-                           }
-                       });
+                        $.ajax({
+                            url: '/admin/user/' + id,
+                            type: 'DELETE',
+                            success: function() {
+                                table.ajax.reload();
+                            }
+                        });
                     }
                 })
             });
