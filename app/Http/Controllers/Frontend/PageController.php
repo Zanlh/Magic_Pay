@@ -147,9 +147,17 @@ class PageController extends Controller
         }
     }
 
-    public function transaction(){
+    public function transaction(Request $request){
         $authUser = auth()->guard('web')->user();
-        $transactions = Transaction::with('user','source')->orderBy('created_at','DESC')->where('user_id',$authUser->id)->paginate(5);
+        $transactions = Transaction::with('user','source')->orderBy('created_at','DESC')->where('user_id',$authUser->id);
+        if($request -> type){
+            $transactions = $transactions->where('type',$request->type);
+        }
+
+        if($request->date){
+            $transactions = $transactions->whereDate('created_at',$request->date);
+        }
+        $transactions = $transactions->paginate(5);
         return view('frontend.transaction',compact('transactions'));
     }
 

@@ -3,6 +3,36 @@
 @section('content')
 
     <div class="transaction">
+
+        <div class="card mb-3">
+            <div class="card-body p-2">
+                <h6> <i class="fas fa-filter"></i> Filter</h6>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group my-2">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text p-1">Date</label>
+                            </div>
+                            <input type="text" class="form-control date" value="{{ request()->date ?? date('Y-m-d') }}">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group my-2">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text p-1">Type</label>
+                            </div>
+                            <select class="custom-select type">
+                                <option value="">All</option>
+                                <option value="1" @if (request()->type == 1) selected @endif>Income</option>
+                                <option value="2" @if (request()->type == 2)selected @endif>Expense</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h6>Transactions</h6>
         <div class="infinite-scroll">
             @foreach ($transactions as $transaction)
                 <a href="{{ route('transactionDetail', $transaction->trx_id) }}">
@@ -38,19 +68,41 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript">
-    $('ul.pagination').hide();
-    $(function() {
-        $('.infinite-scroll').jscroll({
-            autoTrigger: true,
-            loadingHtml: '<div class="text-center"><img src="/images/loading.gif" alt="Loading..." /></div>',
-            padding: 0,
-            nextSelector: '.pagination li.active + li a',
-            contentSelector: 'div.infinite-scroll',
-            callback: function() {
-                $('ul.pagination').remove();
-            }
+    <script type="text/javascript">
+        $('ul.pagination').hide();
+        $(function() {
+            $('.infinite-scroll').jscroll({
+                autoTrigger: true,
+                loadingHtml: '<div class="text-center"><img src="/images/loading.gif" alt="Loading..." /></div>',
+                padding: 0,
+                nextSelector: '.pagination li.active + li a',
+                contentSelector: 'div.infinite-scroll',
+                callback: function() {
+                    $('ul.pagination').remove();
+                }
+            });
+
+            $('.date').daterangepicker({
+                "singleDatePicker": true,
+                "autoApply": true,
+                "locale": {
+                    "format": "YYYY-MM-DD",
+                },
+            });
+
+            $('.date').on('apply.daterangepicker', function(ev, picker) {
+                var date = $('.date').val();
+                var type = $('.type').val();
+                history.pushState(null, '', `?date=${date}&type=${type}`);
+                window.location.reload();
+            });
+
+            $('.type').on('change', function() {
+                var date = $('.date').val();
+                var type = $('.type').val();
+                history.pushState(null, '', `?date=${date}&type=${type}`);
+                window.location.reload();
+            });
         });
-    });
-</script>
+    </script>
 @endsection
