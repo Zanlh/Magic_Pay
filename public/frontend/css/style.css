@@ -292,3 +292,10 @@ a:hover {
     height: 25px;
     margin-right: 8px;
 }
+
+
+/* -----------------------------Transaction Detail-------------------------------- */
+
+.transaction-detail img {
+    width: 60px;
+}

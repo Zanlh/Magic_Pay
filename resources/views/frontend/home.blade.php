@@ -41,7 +41,7 @@
                             <span class="mr-3"><i class="fas fa-angle-right"></i></span>
                         </a>
                         <hr>
-                        <a href="#" class="d-flex justify-content-between ">
+                        <a href="{{route('transaction')}}" class="d-flex justify-content-between ">
                             <span><img src="{{ asset('img/transaction.png') }}" alt="">Transaction</span>
                             <span class="mr-3"><i class="fas fa-angle-right"></i></span>
                         </a>

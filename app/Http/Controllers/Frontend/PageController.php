@@ -139,12 +139,24 @@ class PageController extends Controller
             
 
             DB::commit();
-            return redirect('/')->with('transfer-success', 'Successfully transferred.');
+        return redirect(route('transactionDetail',$from_account_transaction->trx_id))->with('transfer-success', 'Successfully transferred.');
 
         } catch (\Exception $error) {
             DB::rollBack();
             return back()->withErrors(['fail' =>'Something Wrong' . $error->getMessage()])->withInput();
         }
+    }
+
+    public function transaction(){
+        $authUser = auth()->guard('web')->user();
+        $transactions = Transaction::with('user','source')->orderBy('created_at','DESC')->where('user_id',$authUser->id)->paginate(5);
+        return view('frontend.transaction',compact('transactions'));
+    }
+
+    public function transactionDetail($trx_id){
+        $authUser = auth()->guard('web')->user();
+        $transaction = Transaction::with('user','source')->where('user_id', $authUser->id)->where('trx_id',$trx_id)->first();
+        return view('frontend.transaction_detail',compact('transaction'));
     }
 
     public function toAccountVerify(Request $request){
@@ -188,4 +200,6 @@ class PageController extends Controller
             'message' =>'The Password is Incorrect!',
         ]);
     }
+
+    
 }

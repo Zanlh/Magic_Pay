@@ -118,6 +118,8 @@
     {{-- sweet-alert2 --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="{{asset('frontend/js/jscroll.min.js')}}"></script>
+
     <script>
         $(document).ready(function() {
             let token = document.head.querySelector('meta[name = "csrf-token"]');
