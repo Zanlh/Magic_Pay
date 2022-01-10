@@ -4,4 +4,9 @@
     ],
     "sqltools.connections": [],
     "monokaiPro.fileIconsMonochrome": true
+
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 16,
+    "editor.fontLigatures": true
+  
 }
