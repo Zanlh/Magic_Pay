@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.4",
         "proengsoft/laravel-jsvalidation": "^4.6",
-        "yajra/laravel-datatables-oracle": "^9.18"
+        "yajra/laravel-datatables-oracle": "^9.18",
+        "hashids/hashids": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -43,6 +44,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "App/Helpers/EncryptDecrypt.php"
         ]
     },
     "autoload-dev": {

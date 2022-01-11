@@ -86,7 +86,7 @@
                             </a>
                         </div>
                         <div class="col-3 text-center">
-                            <a href="" class="">
+                            <a href="{{route('transaction')}}" class="">
                                 <i class="fas fa-exchange-alt"></i>
                                 <p class="mb-0">Transactions</p>
                             </a>

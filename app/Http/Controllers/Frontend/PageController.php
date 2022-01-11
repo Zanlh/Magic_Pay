@@ -58,6 +58,18 @@ class PageController extends Controller
     public function transferConfirm(TransferFormValidate $request){
         $user = auth()->guard('web')->user();
 
+        $from_account = $user;
+        $amount =  $request->amount; 
+        $description = $request->description; 
+        $hash_value = $request->hash_value;
+
+        $str = $request->to_phone.$request->amount.$request->description;
+        $hash_value2 = hash_hmac('sha256', $str, 'magicpay123!@#');
+
+        if($request->hash_value !== $hash_value2){
+            return back()->withErrors(['amount' =>'The given data is invalid'])->withInput();
+        }
+
         if($request ->amount<1000){
             return back()->withErrors(['amount' =>'The amount must be at least 1000 MMK'])->withInput();
         }
@@ -75,14 +87,18 @@ class PageController extends Controller
             return back()->withErrors(['to_phone'=>'To account is invalid'])->withInput();
         }
 
-        $from_account = $user;
-        $amount = $request->amount; 
-        $description = $request->description; 
-        return view('frontend.transfer_confirm',compact('from_account','to_account','amount','description'));
+        return view('frontend.transfer_confirm',compact('from_account','to_account','amount','description','hash_value'));
     }
 
     public function transferComplete(TransferFormValidate $request){
-        // return $request->all();
+        
+        $str = $request->to_phone.$request->amount.$request->description;
+        $hash_value2 = hash_hmac('sha256', $str, 'magicpay123!@#');
+
+        if($request->hash_value !== $hash_value2){
+            return back()->withErrors(['amount' =>'The given data is invalid'])->withInput();
+        }
+
         if($request ->amount<1000){
             return back()->withErrors(['amount' =>'The amount must be at least 1000 MMK'])->withInput();
         }
@@ -149,7 +165,9 @@ class PageController extends Controller
 
     public function transaction(Request $request){
         $authUser = auth()->guard('web')->user();
-        $transactions = Transaction::with('user','source')->orderBy('created_at','DESC')->where('user_id',$authUser->id);
+        $transactions = Transaction::with('user','source')
+                        ->orderBy('created_at','DESC')
+                        ->where('user_id',$authUser->id);
         if($request -> type){
             $transactions = $transactions->where('type',$request->type);
         }
@@ -163,7 +181,10 @@ class PageController extends Controller
 
     public function transactionDetail($trx_id){
         $authUser = auth()->guard('web')->user();
-        $transaction = Transaction::with('user','source')->where('user_id', $authUser->id)->where('trx_id',$trx_id)->first();
+        $transaction = Transaction::with('user','source')
+                        ->where('user_id', $authUser->id)
+                        ->where('trx_id',$trx_id)
+                        ->first();
         return view('frontend.transaction_detail',compact('transaction'));
     }
 
@@ -206,6 +227,16 @@ class PageController extends Controller
         return response()->json([
             'status' => 'fail',
             'message' =>'The Password is Incorrect!',
+        ]);
+    }
+
+    public function transferHash(Request $request){
+        $str = $request->to_phone.$request->amount.$request->description;
+        $hash_value = hash_hmac('sha256', $str, 'magicpay123!@#');
+
+        return response()->json([
+            'status' => 'success',
+            'data' =>$hash_value,
         ]);
     }
 
