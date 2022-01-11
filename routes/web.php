@@ -50,6 +50,7 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
     Route::get('/transfer-hash','pageController@transferHash');
 
     Route::get('/receive-qr','pageController@receiveQr');
+    Route::get('/scan-and-pay','pageController@scanAndPay');
 
     
 });

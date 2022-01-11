@@ -299,3 +299,10 @@ a:hover {
 .transaction-detail img {
     width: 60px;
 }
+
+
+/* -----------------------------Scan and Pay-------------------------------- */
+
+.scan_and_pay img {
+    width: 200px;
+}

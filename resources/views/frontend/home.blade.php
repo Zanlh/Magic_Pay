@@ -12,36 +12,39 @@
                 </p>
             </div>
             <div class="col-6">
-                <div class="card mb-3">
+                <a href="{{ url('scan-and-pay') }}"><div class="card mb-3">
                     <div class="card-body shortcut-box p-3">
                         <img src="{{ asset('img/qr-code-scan.png') }}" alt="">
                         <span>Scan & Pay</span>
                     </div>
-                </div>
+                </div></a>
             </div>
+
             <div class="col-6">
-                <div class="card mb-3">
-                    <div class="card-body shortcut-box p-3">
-                        <img src="{{ asset('img/qr-code.png') }}" alt="">
-                        <span>Receive</span>
+                <a href="{{ url('receive-qr') }}">
+                    <div class="card mb-3">
+                        <div class="card-body shortcut-box p-3">
+                            <img src="{{ asset('img/qr-code.png') }}" alt="">
+                            <span>Receive</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="col-12">
                 <div class="card mb-3">
                     <div class="card-body shortcut-box pr-0">
-                        <a href="{{route('transfer')}}" class="d-flex justify-content-between">
+                        <a href="{{ route('transfer') }}" class="d-flex justify-content-between">
                             <span><img src="{{ asset('img/money-transfer.png') }}" alt=""> Transfer</span>
                             <span class="mr-3"><i class="fas fa-angle-right"></i></span>
                         </a>
                         <hr>
-                        <a href="{{route('wallet')}}" class="d-flex justify-content-between ">
+                        <a href="{{ route('wallet') }}" class="d-flex justify-content-between ">
                             <span><img src="{{ asset('img/wallet.png') }}" alt="">Wallet</span>
                             <span class="mr-3"><i class="fas fa-angle-right"></i></span>
                         </a>
                         <hr>
-                        <a href="{{route('transaction')}}" class="d-flex justify-content-between ">
+                        <a href="{{ route('transaction') }}" class="d-flex justify-content-between ">
                             <span><img src="{{ asset('img/transaction.png') }}" alt="">Transaction</span>
                             <span class="mr-3"><i class="fas fa-angle-right"></i></span>
                         </a>
