@@ -51,6 +51,12 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
 
     Route::get('/receive-qr','pageController@receiveQr');
     Route::get('/scan-and-pay','pageController@scanAndPay');
+    Route::get('/scan-and-pay-form', 'pageController@scanAndPayForm');
+    Route::get('/scan-and-pay/confirm','pageController@scanAndPayConfirm');
+
+    Route::get('/scan-and-pay/confirm','pageController@scanAndPayConfirm');
+    Route::post('/scan-and-pay/complete','pageController@scanAndPayComplete');
+    
 
     
 });

@@ -5,6 +5,7 @@
     <div class="scan_and_pay">
         <div class="card my-card">
             <div class="card-body text-center">
+                @include('frontend.layouts.flash')
                 <div class="text-center">
                     <img src="{{ asset('img/scan.png') }}" alt="">
                 </div>
@@ -44,8 +45,12 @@
             
             const qrScanner = new QrScanner(videoElem, function(result) {
                 if(result){
-                    $('#scanModal').modal('hide')
                     qrScanner.stop();
+                    $('#scanModal').modal('hide');
+
+                    var to_phone = result;
+                    window.location.replace(`scan-and-pay-form?to_phone=${to_phone}`);
+                    
                 }
                 console.log(result);
             });
