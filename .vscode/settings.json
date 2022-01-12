@@ -3,7 +3,7 @@
         "Datatables"
     ],
     "sqltools.connections": [],
-    "monokaiPro.fileIconsMonochrome": true
+    "monokaiPro.fileIconsMonochrome": false
 
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontSize": 16,

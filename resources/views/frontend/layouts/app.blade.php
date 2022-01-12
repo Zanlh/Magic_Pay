@@ -46,7 +46,7 @@
 
                         </div>
                         <div class="col-2 text-center">
-                            <a href="" class="">
+                            <a href="{{url('notification')}}" class="">
                                 <i class="fas fa-bell"></i>
                             </a>
                         </div>
