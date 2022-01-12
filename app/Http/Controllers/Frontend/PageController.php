@@ -254,7 +254,7 @@ class PageController extends Controller
         $from_account = auth()->guard('web')->user();
         $to_account = User::where('phone', $request->to_phone)->first();
         if(!$to_account){
-            return back()->withErrors(['fail','QR code is invalid.'])->withInput();
+            return back()->withErrors(['fail'=>'QR code is invalid.'])->withInput();
         }
 
         return view('frontend.scan_and_pay_form', compact('to_account','from_account'));
