@@ -47,7 +47,8 @@
                         </div>
                         <div class="col-2 text-center">
                             <a href="{{url('notification')}}" class="">
-                                <i class="fas fa-bell"></i>
+                                <i class="fas fa-bell"></i><span class="badge badge-pill badge-danger unread_noti_count">{{$unread_noti_count}}</span>
+
                             </a>
                         </div>
                     </div>

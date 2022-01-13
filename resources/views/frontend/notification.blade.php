@@ -9,15 +9,15 @@
                 $data = json_decode($notification->data,true);
             @endphp --}}
                 <a href="{{ url('notification/' . $notification->id) }}">
-                    <div class="card mb-2" style="@if(is_null($notification->read_at)) background: lightgray @endif ">
+                    <div class="card mb-2" style="@if (is_null($notification->read_at)) background: lightgray @endif ">
                         <div class="card-body p-2">
-                            <h6> {{ Illuminate\Support\Str::limit($notification->data['title'],40) }}</h6>
-                            <p class="mb-1">{{ Illuminate\Support\Str::limit($notification->data['message'],100) }}</p>
+                            <h6> {{ Illuminate\Support\Str::limit($notification->data['title'], 40) }}</h6>
+                            <p class="mb-1">
+                                {{ Illuminate\Support\Str::limit($notification->data['message'], 100) }}</p>
                             {{-- <small class="text-muted mb-1">{{Carbon\Carbon::parse($notification->created_at)->format('Y-m-d h:i:s A')}}</small> --}}
-                            <small class="text-muted mb-1">{{$notification->created_at->diffForHumans()}}</small>
+                            <small class="text-muted mb-1">{{Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</small>
                         </div>
                     </div>
-
                 </a>
             @endforeach
             {{ $notifications->links() }}

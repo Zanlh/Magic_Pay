@@ -15,6 +15,7 @@
         "hashids/hashids": "^4.1",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^7.29",
+        "laravel/passport": "~9.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.4",
         "proengsoft/laravel-jsvalidation": "^4.6",
@@ -47,7 +48,8 @@
             "database/factories"
         ],
         "files": [
-            "App/Helpers/EncryptDecrypt.php"
+            "App/Helpers/EncryptDecrypt.php",
+            "App/Helpers/ResponseHelper.php"
         ]
     },
     "autoload-dev": {

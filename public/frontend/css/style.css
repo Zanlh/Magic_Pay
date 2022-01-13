@@ -49,7 +49,7 @@ a:hover {
 }
 
 
-/* -----------------------------BSweet ALert 2-------------------------------- */
+/* -----------------------------Sweet ALert 2-------------------------------- */
 
 .btn {
     padding: 10px;
@@ -163,6 +163,13 @@ a:hover {
 .header-menu a:hover p {
     color: #5842e3;
     transition: .3s;
+}
+
+.header-menu .unread_noti_count {
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    padding: 3px;
 }
 
 
