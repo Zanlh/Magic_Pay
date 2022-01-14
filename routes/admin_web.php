@@ -24,4 +24,11 @@ Route::prefix('admin')->name('admin.')->namespace('Backend')->middleware('auth:a
     Route::get('wallet','WalletController@index')->name('wallet.index');
     Route::get('wallet/datatable/ssd','WalletController@ssd');
 
+    Route::get('wallet/add/amount','WalletController@addAmount');
+    Route::post('wallet/add/amount/store','WalletController@storeAmount');
+    
+    
+    Route::get('wallet/reduce/amount','WalletController@reduceAmount');
+    Route::post('wallet/reduce/amount/store','WalletController@minusAmount');
+
 });

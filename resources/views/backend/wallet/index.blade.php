@@ -15,8 +15,8 @@
         </div>
     </div>
     <div class="pt-3">
-        <a href="{{ route('admin.user.create') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Create
-            User</a>
+        <a href="{{ url('admin/wallet/add/amount') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i> Add amount</a>
+        <a href="{{ url('admin/wallet/reduce/amount') }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i> Reduce Amount</a>
     </div>
 
     <div class="content py-3">
@@ -45,7 +45,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-           var table =  $('.Datatable').DataTable({
+            var table = $('.Datatable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "/admin/wallet/datatable/ssd",
@@ -70,7 +70,9 @@
                         name: "updated_at",
                     },
                 ],
-                order: [[ 4, "desc" ]],
+                order: [
+                    [4, "desc"]
+                ],
                 columnDefs: [{
                     targets: 'no-sort',
                     sortable: false
