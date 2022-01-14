@@ -47,8 +47,10 @@
                         </div>
                         <div class="col-2 text-center">
                             <a href="{{url('notification')}}" class="">
-                                <i class="fas fa-bell"></i><span class="badge badge-pill badge-danger unread_noti_count">{{$unread_noti_count}}</span>
-
+                                <i class="fas fa-bell"></i>
+                                @if ($unread_noti_count>0)
+                                <span class="badge badge-pill badge-danger unread_noti_count">{{$unread_noti_count}}</span>
+                                @endif
                             </a>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 ============================
 Theme Design
 ============================
-Theme - #5842e3
+Theme - #2c4e72
 background: EDEDF5
 border-radius: 10px
 font-size: 15px
@@ -21,7 +21,7 @@ a {
 
 a:hover {
     text-decoration: none;
-    color: #5842e3;
+    color: #2c4e72;
 }
 
 .card {
@@ -35,12 +35,12 @@ a:hover {
 }
 
 .btn-theme {
-    background: #5842e3;
+    background: #2c4e72;
     color: #fff;
 }
 
 .btn-theme:hover {
-    background: #5842e3;
+    background: #2c4e72;
     color: #fff;
 }
 
@@ -69,7 +69,7 @@ a:hover {
 }
 
 .swal2-styled.swal2-confirm {
-    background: #5842e3 !important;
+    background: #2c4e72 !important;
 }
 
 
@@ -87,7 +87,7 @@ a:hover {
 }
 
 .auth-form a:hover {
-    color: #5842e3;
+    color: #2c4e72;
 }
 
 
@@ -118,12 +118,12 @@ a:hover {
 }
 
 .bottom-menu a:hover i {
-    color: #5842e3;
+    color: #2c4e72;
     transition: .3s;
 }
 
 .bottom-menu a:hover p {
-    color: #5842e3;
+    color: #2c4e72;
     transition: .3s;
 }
 
@@ -156,12 +156,12 @@ a:hover {
 }
 
 .header-menu a:hover i {
-    color: #5842e3;
+    color: #2c4e72;
     transition: .3s;
 }
 
 .header-menu a:hover p {
-    color: #5842e3;
+    color: #2c4e72;
     transition: .3s;
 }
 
@@ -244,16 +244,16 @@ a:hover {
 
 @keyframes glow {
     0% {
-        box-shadow: 0 0 -10px #5842e3;
+        box-shadow: 0 0 -10px #2c4e72;
     }
     40% {
-        box-shadow: 0 0 15px #5842e3;
+        box-shadow: 0 0 15px #2c4e72;
     }
     60% {
-        box-shadow: 0 0 15px #5842e3;
+        box-shadow: 0 0 15px #2c4e72;
     }
     100% {
-        box-shadow: 0 0 -10px #5842e3;
+        box-shadow: 0 0 -10px #2c4e72;
     }
 }
 
@@ -263,7 +263,8 @@ a:hover {
 .wallet {}
 
 .wallet .my-card {
-    background: #5842e3;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(44, 78, 114, 1) 0%, rgba(0, 212, 255, 1) 100%);
     color: #fff;
 }
 
